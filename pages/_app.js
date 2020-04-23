@@ -6,11 +6,6 @@ import Navbar from "../components/Layouts/Navbar";
 
 class MyApp extends App {
     static async getInitialProps({Component, ctx}) {
-        return {
-            pageProps: Component.getInitialProps
-                ? await Component.getInitialProps(ctx)
-                : {}
-        };
         let pageProps = {};
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx);
@@ -32,7 +27,7 @@ class MyApp extends App {
         const {Component, pageProps} = this.props;
         const props = {
             ...pageProps,
-            user: this.state['user'],
+            user: this.state.user,
         };
 
         return (
