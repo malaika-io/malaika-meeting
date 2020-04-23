@@ -1,8 +1,7 @@
 import Link from "next/link";
-import features from "../lib/features";
+import features from "../../lib/features";
 
 export default function AppNavbar({user}) {
-    const navbarStyle = {marginBottom: "25px"};
     return (
         <header>
             <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -53,6 +52,15 @@ export default function AppNavbar({user}) {
                                 </div>
                             </div>
                         </div>
+                        <Link href="/contact">
+                            <a className="navbar-item">Contact</a>
+                        </Link>
+                        {!user && (
+                            <Link href="/login">
+                                <a className="navbar-item">Log In</a>
+                            </Link>
+                        )}
+
                         {user && (
                             <>
                                 <Link href="/share-thought">
@@ -66,12 +74,6 @@ export default function AppNavbar({user}) {
                                 </Link>
                             </>
                         )}
-                        {!user && (
-                            <Link href="/login">
-                                <a className="nav-link">Log In</a>
-                            </Link>
-                        )}}
-
                     </div>
                 </div>
             </nav>

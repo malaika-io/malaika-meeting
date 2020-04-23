@@ -1,14 +1,11 @@
-import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
+import {useRouter} from 'next/router';
 
 const FeaturePage = () => {
-  const router = useRouter();
+    const router = useRouter();
 
-  return (
-    <Layout>
-      <h1>{router.query.title}</h1>
-    </Layout>
-  );
+    return (
+        <h1>{router.query.title}</h1>
+    );
 };
 
 export default FeaturePage;

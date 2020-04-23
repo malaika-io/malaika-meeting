@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Navbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/invitation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/team.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layouts/Navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/feature.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/feature.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/styles/styles.sass" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,10 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/Layouts" />
+      <recent name="$PROJECT_DIR$/styles" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -72,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
-      <workItem from="1587592637121" duration="2842000" />
+      <workItem from="1587592637121" duration="7318000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -88,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587587075262</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="version stable">
+      <created>1587629581043</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587629581043</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,13 +110,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add session" />
-    <option name="LAST_COMMIT_MESSAGE" value="add session" />
+    <MESSAGE value="version stable" />
+    <option name="LAST_COMMIT_MESSAGE" value="version stable" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587629579105">
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587637156681">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587629579105" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587637156681" />
+    <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="681" y="278" key="EditFileWatcherDialog/0.23.1920.977@0.23.1920.977" timestamp="1587636773193" />
     <state x="774" y="294" width="667" height="476" key="find.popup" timestamp="1587592240282">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
