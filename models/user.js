@@ -1,6 +1,6 @@
 const {Sequelize} = require("sequelize");
 const bcrypt = require('bcrypt');
-const email = require('../utils/email');
+
 
 class User extends Sequelize.Model {
 
@@ -57,7 +57,6 @@ class User extends Sequelize.Model {
     }
 
     static associate(models) {
-        //this.belongsTo(models.Team);
         this.belongsToMany(models.Room, {through: 'UserRoom'});
 
     }
@@ -66,16 +65,6 @@ class User extends Sequelize.Model {
         return !!bcrypt.compareSync(password, hash)
     };
 
-
-    static inviteUser(invitation) {
-        const data = {
-            invitedBy: invitation.from,
-            to: invitation.to,
-            url: invitation.url,
-            organization_name: invitation.organization_name
-        };
-        return email.send(data)
-    };
 
     resetPassword = async function (hash) {
         this.update({password: hash});

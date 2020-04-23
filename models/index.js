@@ -26,15 +26,11 @@ const sequelize = new Sequelize(
 );
 
 const User = require("./user");
-//const Team = require("./team");
-//const Invitation = require("./invitation");
 const Message = require("./message");
 const Room = require("./room");
 
 const models = {
     User: User.init(sequelize, Sequelize),
-    //Team: Team.init(sequelize, Sequelize),
-    //Invitation: Invitation.init(sequelize, Sequelize),
     Message: Message.init(sequelize, Sequelize),
     Room: Room.init(sequelize, Sequelize)
 };

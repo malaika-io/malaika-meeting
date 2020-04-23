@@ -9,7 +9,7 @@ const session = require('express-session');
 const redisConnect = require("connect-redis");
 const dotenv = require("dotenv");
 dotenv.config();
-
+const models = require('./models');
 const redisClient = redis.createClient();
 const RedisStore = redisConnect(session);
 const SessionStore = new RedisStore({client: redisClient});
@@ -45,7 +45,14 @@ app.prepare().then(() => {
 
     passport.deserializeUser(async (id, done) => {
         try {
-
+            let user = await models.User.findByPk(id, {
+                attributes: {exclude: ['password']},
+                include: [models.Room]
+            });
+            if (!user) {
+                return done(new Error('user Not found'), null);
+            }
+            return done(null, user);
         } catch (e) {
             return done(e, null);
         }
