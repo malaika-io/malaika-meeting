@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "now-build": "next build",
-    "dev": "nodemon server.js -p $PORT",
+    "dev": "node server.js -p $PORT",
     "build": "next build",
     "start": "NODE_ENV=production node server.js -p $PORT"
   },

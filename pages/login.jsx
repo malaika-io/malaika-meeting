@@ -37,45 +37,36 @@ const useStyles = makeStyles(theme => ({
         marginTop: -12,
         marginLeft: -12
     }
-}))
+}));
 
 const LoginForm = () => {
     const router = useRouter();
     const [errorMsg, setErrorMsg] = useState('');
     const [user, {mutate}] = useUser();
     useEffect(() => {
-        // redirect to home if user is authenticated
-        if (user) router.replace('/');
+        if (user) router.replace('/profile');
     }, [user]);
+
+    const classes = useStyles({});
+    const [formData, setFormData] = useState({email: '', password: ''});
+    const [submitting, setSubmitting] = useState(false);
 
     async function onSubmit(e) {
         e.preventDefault();
-        const body = {
-            user: {
-                email: e.currentTarget.email.value,
-                password: e.currentTarget.password.value
-            }
-        };
-        console.log(body)
 
         const res = await fetch('/api/users/login/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body),
+            body: JSON.stringify(formData),
         });
-        console.log(res)
         if (res.status === 200) {
             const userObj = await res.json();
-            console.log(userObj)
             mutate(userObj);
         } else {
             setErrorMsg('Incorrect username or password. Try again!');
         }
     }
 
-    const classes = useStyles({})
-    const [formData, setFormData] = useState({email: '', password: ''})
-    const [submitting, setSubmitting] = useState(false)
 
     return (
         <main className={classes.layout}>
@@ -94,6 +85,7 @@ const LoginForm = () => {
                     </Typography>
                 </Box>
                 <form className={classes.form} noValidate onSubmit={onSubmit}>
+                    {errorMsg ? <p style={{color: 'red'}}>{errorMsg}</p> : null}
                     <TextField
                         margin="normal"
                         required

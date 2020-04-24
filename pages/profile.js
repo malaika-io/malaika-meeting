@@ -1,9 +1,11 @@
 import { useUser } from '../lib/hooks';
+import Head from "next/dist/next-server/lib/head";
 
 const ProfilePage = () => {
     const [user] = useUser();
     const {
-        email
+        email,
+        first_name
     } = user || {};
 
     return (
@@ -40,7 +42,7 @@ const ProfilePage = () => {
         `}
             </style>
             <Head>
-                <title>{name}</title>
+                <title>{first_name}</title>
             </Head>
             <div>
 

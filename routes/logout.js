@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', async function (req, res) {
-    req.logOut();
+router.delete('/', async function (req, res) {
+    req.logout();
     res.status(204).end();
 });
 

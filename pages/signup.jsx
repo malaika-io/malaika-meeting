@@ -51,32 +51,20 @@ const Signup = () => {
         password: ''
     });
     const [submitting, setSubmitting] = useState(false);
-
-
-    // call whenever user changes (ex. right after signing up successfully)
     useEffect(() => {
-        // redirect to home if user is authenticated
-        if (user) Router.replace('/');
+        if (user) Router.replace('/profile');
     }, [user]);
 
     const classes = useStyles({});
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const body = {
-            email: e.currentTarget.email.value,
-            name: e.currentTarget.name.value,
-            password: e.currentTarget.password.value,
-        };
         const res = await fetch('/api/users/signup', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body),
+            body: JSON.stringify(formData),
         });
         if (res.status === 201) {
             const userObj = await res.json();
-            // writing our user object to the state
             mutate(userObj);
         } else {
             setErrorMsg(await res.text());
@@ -97,7 +85,8 @@ const Signup = () => {
                     </Typography>
                 </Box>
 
-                <form method="post" className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                    {errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : null}
                     <TextField
                         margin="normal"
                         required

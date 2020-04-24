@@ -60,8 +60,8 @@ app.prepare().then(() => {
     });
 
     passport.use(new LocalStrategy({
-            usernameField: 'user[email]',
-            passwordField: 'user[password]',
+            usernameField: 'email',
+            passwordField: 'password',
         },
         async (email, password, done) => {
             const user = await models.User.findOne({
@@ -74,15 +74,17 @@ app.prepare().then(() => {
         })
     );
 
-    // 6 - you are restricting access to some routes
     const restrictAccess = (req, res, next) => {
         if (!req.isAuthenticated()) return res.redirect("/login");
         next();
     };
+
     function extractUser(req) {
         if (!req.user) return null;
         const {
             email,
+            first_name,
+            last_name
         } = req.user;
         return {
             email
@@ -92,7 +94,7 @@ app.prepare().then(() => {
     server.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
     server.use("/profile", restrictAccess);
     server.post('/api/users/login', (req, res) => {
-        const {body: {user}} = req;
+        const user = req.body;
         if (!user.email) {
             return res.status(422).json({
                 errors: {
@@ -110,10 +112,8 @@ app.prepare().then(() => {
         }
 
         return passport.authenticate('local', {session: false}, (err, passportUser, info) => {
-            console.log(info)
             if (err) {
-                console.log(err)
-                if (err) throw err;
+                if (err) return res.status(400).send('Une erreur s\'est produite lors de la création de votre compte');
             }
             if (passportUser) {
                 req.logIn(passportUser, function (err) {
@@ -127,13 +127,13 @@ app.prepare().then(() => {
                     res.json({user: user});
                 });
             }
-            return res.status(400).info;
+            return res.status(400).send(info);
         })(req, res, next);
     });
     const signup = require('./routes/signup');
     const logout = require('./routes/logout');
     server.use('/api/users/signup', signup);
-    server.get('/api/users/logout', logout);
+    server.use('/api/users/logout', logout);
 
 
     server.get('*', (req, res) => {

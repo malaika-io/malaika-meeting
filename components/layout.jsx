@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useUser} from '../lib/hooks';
+import {useRouter} from 'next/router';
 
 export default ({children}) => {
     const [user, {mutate}] = useUser();
+    const router = useRouter();
+    useEffect(() => {
+        // redirect to home if user is authenticated
+        if (user) router.replace('/');
+    }, [user]);
+
     const handleLogout = async () => {
         await fetch('/api/users/logout', {
             method: 'DELETE',
@@ -14,7 +21,7 @@ export default ({children}) => {
     const toggleStyles = (event) => {
         document.querySelector('#burger').classList.toggle('is-active')
         document.querySelector('#navbarmenu').classList.toggle('is-active')
-    }
+    };
 
     return (
         <div className="theme">
