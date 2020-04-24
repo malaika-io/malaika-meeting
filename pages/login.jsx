@@ -5,9 +5,11 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useUser } from '../lib/hooks';
+import React, {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
+import {useUser} from '../lib/hooks';
+import fetch from 'node-fetch'
+
 const useStyles = makeStyles(theme => ({
     layout: {
         display: 'flex',
@@ -40,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 const LoginForm = () => {
     const router = useRouter();
     const [errorMsg, setErrorMsg] = useState('');
-    const [user, { mutate }] = useUser();
+    const [user, {mutate}] = useUser();
     useEffect(() => {
         // redirect to home if user is authenticated
         if (user) router.replace('/');
@@ -49,16 +51,22 @@ const LoginForm = () => {
     async function onSubmit(e) {
         e.preventDefault();
         const body = {
-            email: e.currentTarget.email.value,
-            password: e.currentTarget.password.value,
+            user: {
+                email: e.currentTarget.email.value,
+                password: e.currentTarget.password.value
+            }
         };
-        const res = await fetch('/api/auth', {
+        console.log(body)
+
+        const res = await fetch('/api/users/login/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body),
         });
+        console.log(res)
         if (res.status === 200) {
             const userObj = await res.json();
+            console.log(userObj)
             mutate(userObj);
         } else {
             setErrorMsg('Incorrect username or password. Try again!');
@@ -79,13 +87,13 @@ const LoginForm = () => {
                     flexDirection="column"
                 >
                     <Typography component="h1" variant="h4" gutterBottom>
-                        Login
+                        Se connecter
                     </Typography>
                     <Typography component="p" gutterBottom>
-                        Log in to your account dashboard
+                        Connectez-vous au tableau de bord de votre compte
                     </Typography>
                 </Box>
-                <form method="post" className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={onSubmit}>
                     <TextField
                         margin="normal"
                         required
@@ -103,7 +111,7 @@ const LoginForm = () => {
                         required
                         fullWidth
                         name="password"
-                        label="Password"
+                        label="Mot de passe"
                         type="password"
                         id="password"
                         autoComplete="current-password"

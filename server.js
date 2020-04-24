@@ -59,19 +59,19 @@ app.prepare().then(() => {
         }
     });
 
-    passport.use(
-        new LocalStrategy(
-            {usernameField: 'email', passReqToCallback: true},
-            async (req, email, password, done) => {
-                const user = await models.User.findOne({
-                    where: {
-                        email: email
-                    }
-                });
-                if (user && (await bcrypt.compare(password, user.password))) done(null, user);
-                else done(null, false)
-            }
-        ),
+    passport.use(new LocalStrategy({
+            usernameField: 'user[email]',
+            passwordField: 'user[password]',
+        },
+        async (email, password, done) => {
+            const user = await models.User.findOne({
+                where: {
+                    email: email
+                }
+            });
+            if (user && (await bcrypt.compare(password, user.password))) done(null, user);
+            else done(null, false, {errors: {'email or password': 'is invalid'}})
+        })
     );
 
     // 6 - you are restricting access to some routes
@@ -79,12 +79,7 @@ app.prepare().then(() => {
         if (!req.isAuthenticated()) return res.redirect("/login");
         next();
     };
-
-    server.use("/profile", restrictAccess);
-
-
     function extractUser(req) {
-        console.log('req')
         if (!req.user) return null;
         const {
             email,
@@ -95,15 +90,48 @@ app.prepare().then(() => {
     }
 
     server.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
+    server.use("/profile", restrictAccess);
+    server.post('/api/users/login', (req, res) => {
+        const {body: {user}} = req;
+        if (!user.email) {
+            return res.status(422).json({
+                errors: {
+                    email: 'is required',
+                },
+            });
+        }
 
+        if (!user.password) {
+            return res.status(422).json({
+                errors: {
+                    password: 'is required',
+                },
+            });
+        }
+
+        return passport.authenticate('local', {session: false}, (err, passportUser, info) => {
+            console.log(info)
+            if (err) {
+                console.log(err)
+                if (err) throw err;
+            }
+            if (passportUser) {
+                req.logIn(passportUser, function (err) {
+                    if (err) {
+                        return res.status(422).json({
+                            errors: {
+                                password: 'is required',
+                            },
+                        });
+                    }
+                    res.json({user: user});
+                });
+            }
+            return res.status(400).info;
+        })(req, res, next);
+    });
     const signup = require('./routes/signup');
     const logout = require('./routes/logout');
-
-    server.get('/api/users/login', (req, res) => {
-        passport.authenticate('local'), (req, res) => {
-            res.json({user: extractUser(req)});
-        }
-    });
     server.use('/api/users/signup', signup);
     server.get('/api/users/logout', logout);
 
