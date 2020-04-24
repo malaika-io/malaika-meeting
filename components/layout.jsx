@@ -8,8 +8,7 @@ export default ({children}) => {
     const [user, {mutate}] = useUser();
     const router = useRouter();
     useEffect(() => {
-        // redirect to home if user is authenticated
-        if (user) router.replace('/');
+        if (user) router.replace('/profile');
     }, [user]);
 
     const handleLogout = async () => {
@@ -19,8 +18,8 @@ export default ({children}) => {
         mutate(null);
     };
     const toggleStyles = (event) => {
-        document.querySelector('#burger').classList.toggle('is-active')
-        document.querySelector('#navbarmenu').classList.toggle('is-active')
+        document.querySelector('#burger').classList.toggle('is-active');
+        document.querySelector('#navbarmenu').classList.toggle('is-active');
     };
 
     return (
@@ -62,7 +61,7 @@ export default ({children}) => {
                                         </Link>
                                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                         <a tabIndex={0} role="button" onClick={handleLogout}>
-                                            Logout
+                                            Se déconnecter
                                         </a>
                                     </>
                                 )}
