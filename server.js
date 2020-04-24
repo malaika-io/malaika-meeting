@@ -136,6 +136,9 @@ app.prepare().then(() => {
     expressApp.use('/api/users/signup', signup);
     expressApp.use('/api/users/logout', logout);
 
+    const rooms = require('./routes/room');
+    expressApp.use('/api/rooms', rooms);
+
     expressApp.get('*', (req, res) => {
         return handle(req, res)
     });

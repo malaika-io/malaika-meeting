@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="add socket.io">
+    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/room.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/rooms.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/room.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
@@ -12,6 +16,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -31,7 +42,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
@@ -42,8 +53,9 @@
       <recent name="$PROJECT_DIR$/styles" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/routes" />
       <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -71,7 +83,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
-      <workItem from="1587722981359" duration="26444000" />
+      <workItem from="1587722981359" duration="34203000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -178,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587742151674</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add rtc">
+      <created>1587753034731</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1587753034731</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,13 +212,18 @@
     <MESSAGE value="version beta3" />
     <MESSAGE value="version beta4" />
     <MESSAGE value="add socket.io" />
-    <option name="LAST_COMMIT_MESSAGE" value="add socket.io" />
+    <MESSAGE value="add rtc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rtc" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587743211529">
-      <screen x="0" y="23" width="1920" height="979" />
+    <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587761278283">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587742150752" />
+    <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.977@0.23.1920.977" timestamp="1587761278283" />
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587753034002">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587753034002" />
     <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.979@0.23.1920.979" timestamp="1587743211529" />
     <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
       <screen x="0" y="23" width="1920" height="977" />

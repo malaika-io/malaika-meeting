@@ -8,7 +8,7 @@ export default ({children}) => {
     const [user, {mutate}] = useUser();
     const router = useRouter();
     useEffect(() => {
-        if (user) router.replace('/profile');
+        //if (user) router.replace('/profile');
     }, [user]);
 
     const handleLogout = async () => {
