@@ -2,7 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/components/layout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/hooks.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/_app.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/signup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Feature.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Features.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/InfoBox.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layouts/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Logo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Summary.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/room.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/feature.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/product.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/rooms.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/logout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/room.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +54,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/components/Layouts" />
       <recent name="$PROJECT_DIR$/styles" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -65,6 +93,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
+      <workItem from="1587722981359" duration="4067000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -120,11 +149,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/pages/index.js" />
-      </list>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add session" />
@@ -133,10 +157,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="correction Navbar.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587653482158">
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587728456316">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587653482158" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587728456316" />
     <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
       <screen x="0" y="23" width="1920" height="977" />
     </state>

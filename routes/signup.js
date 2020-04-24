@@ -3,70 +3,53 @@ const router = express.Router();
 const models = require('../models');
 const bcrypt = require('bcrypt');
 const xss = require('xss');
-const debug = require('../utils/logging');
 const {v4: uuidv4} = require('uuid');
+const isEmail = require('validator/lib/isEmail');
+const normalizeEmail = require('validator/lib/normalizeEmail');
 
-
-const isNotAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return res.redirect('/users');
+router.post('/', async function (req, res) {
+    const {last_name, first_name, password} = req.body;
+    const email = normalizeEmail(req.body.email); // this is to handle things like jane.doe@gmail.com and janedoe@gmail.com being the same
+    if (!isEmail(email)) {
+        res.status(400).send('The email you entered is invalid.');
+        return;
     }
-    next();
-};
+    if (!password || !first_name) {
+        res.status(400).send('Missing field(s)');
+        return;
+    }
+    const user = await models.User.findOne({
+        where: {
+            email: email
+        }
+    });
 
-router.get('/', async function (req, res) {
-    res.render('auth/signup');
-});
-
-router.post('/', async function (req, res, next) {
-    debug.log.info('register');
-
-    const {email, room, password, last_name} = req.body;
+    // check if email existed
+    if (user) {
+        res.status(403).send('The email has already been used.');
+    }
     const userInfos = {
         password: bcrypt.hashSync(password, 10),
-        organization: xss(room),
         last_name: xss(last_name),
+        first_name: xss(first_name),
         uuid: uuidv4(),
         email: xss(email)
     };
 
-    return execute()
-        .then((user) => {
-            if (user) {
-                console.log(user)
-                return req.logIn(user, (err) => {
-                    if (err) {
-                        return res.render("signup", {errors: new Error("Une erreur est survenue. Essayez d\'actualiser cette page")});
-                    }
-                    res.redirect(`/users/${user.uuid}`);
-                })
-            } else {
-                return res.render("auth/signup", {errors: errors.array()});
-            }
-        }).catch((err) => {
-            next(err);
-        });
-
-    async function execute() {
-        try {
-            const new_user = await models.sequelize.transaction(async function (t) {
-                let newUser = await models.User.create(userInfos, {transaction: t});
-                let newRomm = await models.Room.create({name: room}, {transaction: t});
-                await newUser.addRoom(newRomm, {transaction: t});
-                return newUser
+    try {
+        let newUser = await models.User.create(userInfos);
+        req.logIn(newUser, (err) => {
+            if (err) throw err;
+            return res.status(201).json({
+                user: newUser
             });
-            await new_user.reload({include: [models.Room]});
-            return new_user;
-        } catch (err) {
-            console.log(err)
-            if (err.name === 'SequelizeUniqueConstraintError') {
-                throw new Error("Cette adresse email est déjà utilisée.");
-            }
-            if (err.name === 'SequelizeValidationError') {
-                throw new Error("Veuillez vérifier le format de votre adresse email");
-            }
-            throw new Error("Une erreur s\'est produite lors de la création de votre compte");
+        });
+    } catch (err) {
+        console.log(err)
+        if (err.name === 'SequelizeValidationError') {
+            throw new Error("Veuillez vérifier le format de votre adresse email");
         }
+        throw new Error("Une erreur s\'est produite lors de la création de votre compte");
     }
 });
 

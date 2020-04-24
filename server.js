@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const path = require('path');
+const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const redis = require('redis');
@@ -13,6 +14,7 @@ const models = require('./models');
 const redisClient = redis.createClient();
 const RedisStore = redisConnect(session);
 const SessionStore = new RedisStore({client: redisClient});
+var LocalStrategy = require('passport-local').Strategy;
 let sess = {
     store: SessionStore,
     secret: process.env["SESSION_SECRET"],
@@ -46,8 +48,7 @@ app.prepare().then(() => {
     passport.deserializeUser(async (id, done) => {
         try {
             let user = await models.User.findByPk(id, {
-                attributes: {exclude: ['password']},
-                include: [models.Room]
+                attributes: {exclude: ['password']}
             });
             if (!user) {
                 return done(new Error('user Not found'), null);
@@ -58,6 +59,21 @@ app.prepare().then(() => {
         }
     });
 
+    passport.use(
+        new LocalStrategy(
+            {usernameField: 'email', passReqToCallback: true},
+            async (req, email, password, done) => {
+                const user = await models.User.findOne({
+                    where: {
+                        email: email
+                    }
+                });
+                if (user && (await bcrypt.compare(password, user.password))) done(null, user);
+                else done(null, false)
+            }
+        ),
+    );
+
     // 6 - you are restricting access to some routes
     const restrictAccess = (req, res, next) => {
         if (!req.isAuthenticated()) return res.redirect("/login");
@@ -65,15 +81,31 @@ app.prepare().then(() => {
     };
 
     server.use("/profile", restrictAccess);
-    server.use("/share-thought", restrictAccess);
 
-    /*const login = require('./routes/login');
+
+    function extractUser(req) {
+        console.log('req')
+        if (!req.user) return null;
+        const {
+            email,
+        } = req.user;
+        return {
+            email
+        };
+    }
+
+    server.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
+
     const signup = require('./routes/signup');
     const logout = require('./routes/logout');
 
-    server.use('/login', login);
-    server.use('/signup', signup);
-    server.use('/logout', logout);*/
+    server.get('/api/users/login', (req, res) => {
+        passport.authenticate('local'), (req, res) => {
+            res.json({user: extractUser(req)});
+        }
+    });
+    server.use('/api/users/signup', signup);
+    server.get('/api/users/logout', logout);
 
 
     server.get('*', (req, res) => {

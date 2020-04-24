@@ -1,25 +1,57 @@
-import styled from "styled-components";
+import { useUser } from '../lib/hooks';
 
-const Picture = styled.img`
-  border-radius: 50%;
-  border: 3px solid white;
-  width: 100px;
-`;
+const ProfilePage = () => {
+    const [user] = useUser();
+    const {
+        email
+    } = user || {};
 
-function Profile({ user }) {
     return (
-        <div>
-            <h2>
-                <Picture src={user.picture} alt={user.displayName} /> Hello, {user.displayName}
-            </h2>
-            <p>This is what we know about you:</p>
-            <ul>
-                { Object.keys(user).map(key => (
-                    <li key={key}>{key}: {user[key].toString()}</li>
-                ))}
-            </ul>
-        </div>
-    );
-}
+        <>
+            <style jsx>
+                {`
+          h2 {
+            text-align: left;
+            margin-right: 0.5rem;
+          }
+          button {
+            margin: 0 0.25rem;
+          }
+          img {
+            width: 10rem;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px 1px;
+            margin-right: 1.5rem;
+          }
+          div {
+            color: #777;
+            display: flex;
+            align-items: center;
+          }
+          p {
+            font-family: monospace;
+            color: #444;
+            margin: 0.25rem 0 0.75rem;
+          }
+          a {
+            margin-left: 0.25rem;
+          }
+        `}
+            </style>
+            <Head>
+                <title>{name}</title>
+            </Head>
+            <div>
 
-export default Profile;
+                <section>
+                    Email
+                    <p>
+                        {email}
+                    </p>
+                </section>
+            </div>
+        </>
+    );
+};
+export default ProfilePage;
