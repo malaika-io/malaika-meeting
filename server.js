@@ -2,6 +2,8 @@ const express = require('express');
 const next = require('next');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const http = require('http');
+const cookie = require('cookie');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const redis = require('redis');
@@ -30,16 +32,12 @@ const app = next({dir: '.', dev});
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-    const server = express();
-    server.use('/images', express.static(path.join(__dirname, 'images'), {
-        maxAge: dev ? '0' : '365d'
-    }));
-
-    server.use(bodyParser.json());
-    server.use(cookieParser());
-    server.use(session(sess));
-    server.use(passport.initialize());
-    server.use(passport.session());
+    const expressApp = express();
+    expressApp.use(bodyParser.json());
+    expressApp.use(cookieParser());
+    expressApp.use(session(sess));
+    expressApp.use(passport.initialize());
+    expressApp.use(passport.session());
 
     passport.serializeUser((user, done) => {
         done(null, user.id);
@@ -93,9 +91,9 @@ app.prepare().then(() => {
         };
     }
 
-    server.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
-    server.use("/profile", restrictAccess);
-    server.post('/api/users/login', (req, res) => {
+    expressApp.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
+    expressApp.use("/profile", restrictAccess);
+    expressApp.post('/api/users/login', (req, res) => {
         const user = req.body;
         if (!user.email) {
             return res.status(422).json({
@@ -134,19 +132,59 @@ app.prepare().then(() => {
     });
     const signup = require('./routes/signup');
     const logout = require('./routes/logout');
-    server.use('/api/users/signup', signup);
-    server.use('/api/users/logout', logout);
+    expressApp.use('/api/users/signup', signup);
+    expressApp.use('/api/users/logout', logout);
 
-
-    server.get('*', (req, res) => {
+    expressApp.get('*', (req, res) => {
         return handle(req, res)
     });
 
-
-    const PORT = process.env.PORT || 3000;
-
-    server.listen(PORT, (err) => {
-        if (err) throw err
-        console.log(`> Read on http://localhost:${PORT}`)
+    const server = http.createServer(expressApp).listen(3000, function () {
+        console.log('Kurento expressApp started');
     });
+
+    let clients = {};
+    let candidatesQueue = {};
+    let pipelines = {};
+    const redisClient = redis.createClient();
+    const redisStore = new RedisStore({client: redisClient});
+
+    const io = require('socket.io')(server, {
+        path: '/kurento',
+        origins: '*:*',
+        transports: ['websocket', 'polling']
+    });
+
+    io.use(function (socket, next) {
+        const handshake = socket.request.headers.cookie;
+        if (!handshake) return next(new Error('socket.io: no found cookie'), false);
+        const parse_cookie = cookie.parse(handshake);
+        const sessionId = cookieParser.signedCookie(parse_cookie['connect.sid'], process.env["SESSION_SECRET"]);
+        try {
+            return redisStore.load(sessionId, function (err, data) {
+                if (data) {
+                    const session = data['passport'];
+                    if (!session) return next(new Error('socket.io: no found cookie'), false);
+                    socket.user_id = session.user;
+                    clients[session.user] = socket.id;
+                    return next(null, true);
+                } else {
+                    return next(new Error('socket.io: no found cookie'), false);
+                }
+            });
+        } catch (e) {
+            return next(new Error('socket.io: no found cookie'), false);
+        }
+    });
+
+    io.on("connection", (socket) => {
+        console.log("New client connected", socket.user_id);
+        const socketId = socket.id;
+        console.log('socket', socketId);
+        socket.on("disconnect", () => {
+            console.log("Client disconnected");
+        });
+
+    });
+
 });

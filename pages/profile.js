@@ -1,12 +1,30 @@
 import { useUser } from '../lib/hooks';
+import React, { useState, useEffect } from "react";
 import Head from "next/dist/next-server/lib/head";
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://localhost:3000";
 
 const ProfilePage = () => {
     const [user] = useUser();
+    const [response, setResponse] = useState("");
     const {
         email,
         first_name
     } = user || {};
+
+    useEffect(() => {
+        const socket = socketIOClient(ENDPOINT,{
+            path: '/kurento',
+            transports: ['websocket', 'polling']
+        });
+        socket.on('connect', function () {
+            console.log('connect');
+        });
+
+        socket.on("FromAPI", data => {
+            setResponse(data);
+        });
+    }, []);
 
     return (
         <>
@@ -45,6 +63,9 @@ const ProfilePage = () => {
                 <title>{first_name}</title>
             </Head>
             <div>
+                <p>
+                    It's <time dateTime={response}>{response}</time>
+                </p>
 
                 <section>
                     Email
