@@ -18,7 +18,7 @@ export default function MyApp({Component, pageProps}) {
             />
             <Layout>
                 <Head>
-                    <title></title>
+                    <title>Malaika</title>
                 </Head>
                 <Component {...pageProps} />
             </Layout>

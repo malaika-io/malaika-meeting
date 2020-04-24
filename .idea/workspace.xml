@@ -2,34 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/layout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/hooks.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_app.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/signup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Feature.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Features.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/InfoBox.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layouts/Navbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Logo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Summary.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/room.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_document.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_error.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/feature.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/product.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/rooms.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/room.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/404.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +70,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
-      <workItem from="1587722981359" duration="4067000" />
+      <workItem from="1587722981359" duration="5903000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -144,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587652613827</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="version beta">
+      <created>1587728458386</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1587728458386</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +138,8 @@
     <MESSAGE value="add session" />
     <MESSAGE value="version stable" />
     <MESSAGE value="correction Navbar.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction Navbar.js" />
+    <MESSAGE value="version beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="version beta" />
   </component>
   <component name="WindowStateProjectService">
     <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587728456316">
