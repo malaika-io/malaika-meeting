@@ -87,7 +87,9 @@ app.prepare().then(() => {
             last_name
         } = req.user;
         return {
-            email
+            email,
+            first_name,
+            last_name
         };
     }
 
