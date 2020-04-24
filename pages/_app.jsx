@@ -7,6 +7,7 @@ export default function MyApp({Component, pageProps}) {
         <Layout>
             <Head>
                 <title>Malaika</title>
+                <script src="/public/kurento-utils.min.js"></script>
             </Head>
             <Component {...pageProps} />
         </Layout>

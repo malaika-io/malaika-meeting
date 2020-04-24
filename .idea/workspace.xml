@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
+    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="add socket.io">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
@@ -70,7 +71,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
-      <workItem from="1587722981359" duration="16853000" />
+      <workItem from="1587722981359" duration="26444000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -170,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587739143824</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add socket.io">
+      <created>1587742151673</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587742151674</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,13 +192,15 @@
     <MESSAGE value="version beta1" />
     <MESSAGE value="version beta3" />
     <MESSAGE value="version beta4" />
-    <option name="LAST_COMMIT_MESSAGE" value="version beta4" />
+    <MESSAGE value="add socket.io" />
+    <option name="LAST_COMMIT_MESSAGE" value="add socket.io" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587739143558">
-      <screen x="0" y="23" width="1920" height="977" />
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587743211529">
+      <screen x="0" y="23" width="1920" height="979" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587739143558" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587742150752" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.979@0.23.1920.979" timestamp="1587743211529" />
     <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
@@ -199,5 +209,9 @@
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="774" y="294" width="667" height="476" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1587592240282" />
+    <state x="285" y="164" width="670" height="676" key="search.everywhere.popup" timestamp="1587745109510">
+      <screen x="0" y="23" width="1920" height="979" />
+    </state>
+    <state x="285" y="164" width="670" height="676" key="search.everywhere.popup/0.23.1920.979@0.23.1920.979" timestamp="1587745109510" />
   </component>
 </project>

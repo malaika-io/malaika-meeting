@@ -1,19 +1,26 @@
-import { useUser } from '../lib/hooks';
-import React, { useState, useEffect } from "react";
+import {useUser} from '../lib/hooks';
+import React, {useState, useEffect} from "react";
 import Head from "next/dist/next-server/lib/head";
 import socketIOClient from "socket.io-client";
+
 const ENDPOINT = "http://localhost:3000";
+if (typeof window === 'undefined') {
+    global.window = {}
+}
+
 
 const ProfilePage = () => {
+    let video;
+    let webRtcPeer;
+
     const [user] = useUser();
-    const [response, setResponse] = useState("");
     const {
         email,
         first_name
     } = user || {};
 
     useEffect(() => {
-        const socket = socketIOClient(ENDPOINT,{
+        const socket = socketIOClient(ENDPOINT, {
             path: '/kurento',
             transports: ['websocket', 'polling']
         });
@@ -21,10 +28,76 @@ const ProfilePage = () => {
             console.log('connect');
         });
 
-        socket.on("FromAPI", data => {
-            setResponse(data);
+        socket.on("presenterResponse", message => {
+            presenterResponse(message);
         });
+
+        socket.on("stopCommunication", message => {
+            dispose();
+        });
+
+        socket.on('iceCandidate', function (message) {
+            webRtcPeer.addIceCandidate(message.candidate)
+        });
+
+        presenter(socket);
+
+        function presenter(socket) {
+            if (!webRtcPeer) {
+
+                let options = {
+                    localVideo: video,
+                    onicecandidate: onIceCandidate
+                };
+
+                webRtcPeer = kurentoUtils.WebRtcPeer.WebRtcPeerSendonly(options, function (error) {
+                    if (error) {
+                        console.log(error)
+                    }
+                    return this.generateOffer((offerSdp) => {
+                        socket.emit('presenter', {
+                            offerSdp: offerSdp
+                        });
+                    });
+                });
+            }
+        }
+
+        function presenterResponse(message) {
+            if (message.response !== 'accepted') {
+                var errorMsg = message.message ? message.message : 'Unknow error';
+                console.warn('Call not accepted for the following reason: ' + errorMsg);
+                if (webRtcPeer) {
+                    webRtcPeer.dispose();
+                    webRtcPeer = null;
+                }
+            } else {
+                webRtcPeer.processAnswer(message.sdpAnswer);
+            }
+        }
+
+        function stop() {
+            if (webRtcPeer) {
+                socket.emit('stop');
+                dispose();
+            }
+        }
+
+        function dispose() {
+            if (webRtcPeer) {
+                webRtcPeer.dispose();
+                webRtcPeer = null;
+            }
+        }
+
+        function onIceCandidate(candidate) {
+            console.log('Local candidate' + JSON.stringify(candidate));
+            socket.emit('onIceCandidate', {
+                candidate: candidate
+            });
+        }
     }, []);
+
 
     return (
         <>
@@ -63,15 +136,16 @@ const ProfilePage = () => {
                 <title>{first_name}</title>
             </Head>
             <div>
-                <p>
-                    It's <time dateTime={response}>{response}</time>
-                </p>
-
                 <section>
                     Email
                     <p>
                         {email}
                     </p>
+                </section>
+                <section>
+                    <div id="videoBig">
+                        <video id="video" autoPlay width="640px" height="480px"></video>
+                    </div>
                 </section>
             </div>
         </>

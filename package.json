@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "kurento-client": "git+https://github.com/Kurento/kurento-client-js.git",
+    "kurento-utils": "^6.13.1",
     "lodash": "^4.17.5",
     "lusca": "^1.6.1",
     "moment": "^2.20.1",
@@ -56,6 +57,7 @@
     "swr": "^0.2.0",
     "uuid": "^7.0.3",
     "validator": "^13.0.0",
+    "webrtc-adapter": "^7.5.1",
     "winston": "^3.2.1",
     "x-xss-protection": "^1.3.0",
     "xss": "^1.0.6"
