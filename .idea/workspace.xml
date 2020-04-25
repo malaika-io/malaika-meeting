@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/room.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/room.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/rooms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rooms.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +78,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
-      <workItem from="1587722981359" duration="49929000" />
+      <workItem from="1587722981359" duration="54502000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -205,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587825010615</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add rooms and socket">
+      <created>1587825244608</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1587825244608</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,18 +230,19 @@
     <MESSAGE value="add socket.io" />
     <MESSAGE value="add rtc" />
     <MESSAGE value="add rooms" />
-    <option name="LAST_COMMIT_MESSAGE" value="add rooms" />
+    <MESSAGE value="add rooms and socket" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rooms and socket" />
   </component>
   <component name="WindowStateProjectService">
     <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587761278283">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.977@0.23.1920.977" timestamp="1587761278283" />
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587825008922">
-      <screen x="0" y="23" width="1920" height="977" />
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587830632537">
+      <screen x="0" y="23" width="1920" height="979" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587825008922" />
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.979@0.23.1920.979" timestamp="1587743211529" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587825242893" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.979@0.23.1920.979" timestamp="1587830632537" />
     <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
       <screen x="0" y="23" width="1920" height="977" />
     </state>

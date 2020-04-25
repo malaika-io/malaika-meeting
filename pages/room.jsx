@@ -9,7 +9,7 @@ if (typeof window === 'undefined') {
 }
 
 
-const ProfilePage = () => {
+const RoomPage = () => {
     let video;
     let webRtcPeer;
 
@@ -40,7 +40,7 @@ const ProfilePage = () => {
             webRtcPeer.addIceCandidate(message.candidate)
         });
 
-        presenter(socket);
+        //presenter(socket);
 
         function presenter(socket) {
             if (!webRtcPeer) {
@@ -151,4 +151,4 @@ const ProfilePage = () => {
         </>
     );
 };
-export default ProfilePage;
+export default RoomPage;

@@ -11,9 +11,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import fetch from 'node-fetch'
 import Link from 'next/link';
+import {useRouter} from "next/router";
+import {BrowserRouter, Route} from 'react-router-dom';
 
+//const router = useRouter();
 
 class RoomsPage extends Component {
+
 
     constructor(props) {
         super(props);
@@ -31,11 +35,15 @@ class RoomsPage extends Component {
         this.setState({open: true});
     }
 
-    goToRoom() {
-
+    goToRoom(history, roomId) {
+        this.props.history.push('/dashboard')
     }
 
     componentDidMount() {
+        this.fetchRooms();
+    }
+
+    fetchRooms() {
         fetch('/api/rooms')
             .then(res => res.json())
             .then((data) => {
@@ -53,8 +61,7 @@ class RoomsPage extends Component {
         });
         if (res.status === 200) {
             this._handleClose();
-        } else {
-
+            this.fetchRooms();
         }
     }
 
@@ -68,8 +75,11 @@ class RoomsPage extends Component {
                             {room.name}
                         </CardContent>
                         <CardActions>
-                            <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>Go to
-                                room</Button>
+                            <Link to={`/${room.name}`} href={`/${room.name}`}>
+                                <Button variant="outlined" color="primary">Go to
+                                    room</Button>
+                            </Link>
+
                         </CardActions>
                     </Card>
                 ))}
@@ -85,7 +95,7 @@ class RoomsPage extends Component {
                     </Button>
 
                     <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                        <DialogTitle id="form-dialog-title">Room</DialogTitle>
                         <form noValidate onSubmit={this.onSubmit}>
                             <DialogContent>
                                 <DialogContentText>
