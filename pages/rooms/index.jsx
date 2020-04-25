@@ -13,7 +13,7 @@ import fetch from 'node-fetch'
 import Link from 'next/link';
 import {useRouter} from "next/router";
 import {BrowserRouter, Route} from 'react-router-dom';
-import Room from './room';
+import Room from './[room]';
 //const router = useRouter();
 
 class RoomsPage extends Component {
@@ -75,7 +75,7 @@ class RoomsPage extends Component {
                             {room.name}
                         </CardContent>
                         <CardActions>
-                            <Link to={`/room/:${room.name}`} href={`/room/:${room.name}`}>
+                            <Link href="rooms/[name]" as={`rooms/${room.name}`} >
                                 <Button variant="outlined" color="primary">Go to
                                     room</Button>
                             </Link>

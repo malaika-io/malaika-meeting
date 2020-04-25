@@ -1,7 +1,8 @@
-import {useUser} from '../lib/hooks';
+import {useUser} from '../../lib/hooks';
 import React, {useState, useEffect} from "react";
 import Head from "next/dist/next-server/lib/head";
 import socketIOClient from "socket.io-client";
+import { useRouter } from 'next/router'
 
 const ENDPOINT = "http://localhost:3000";
 if (typeof window === 'undefined') {
@@ -12,7 +13,9 @@ if (typeof window === 'undefined') {
 const RoomPage = () => {
     let video;
     let webRtcPeer;
-
+    const router = useRouter()
+    
+    const { room } =  router.query 
     const [user] = useUser();
     const {
         email,
@@ -141,6 +144,8 @@ const RoomPage = () => {
                     <p>
                         {email}
                     </p>
+                    Room name : 
+                    <p>{room}</p>
                 </section>
                 <section>
                     <div id="videoBig">
