@@ -65,11 +65,13 @@ app.prepare().then(() => {
             passwordField: 'password',
         },
         async (email, password, done) => {
+            console.log(email)
             const user = await models.User.findOne({
                 where: {
                     email: email
                 }
             });
+            console.log(user)
             if (user && (await bcrypt.compare(password, user.password))) done(null, user);
             else done(null, false, {errors: {'email or password': 'is invalid'}})
         })
@@ -96,8 +98,11 @@ app.prepare().then(() => {
 
     expressApp.get("/api/user", async (req, res) => res.json({user: extractUser(req)}));
     expressApp.use("/profile", restrictAccess);
+    expressApp.use("/rooms", restrictAccess);
+
     expressApp.post('/api/users/login', (req, res) => {
         const user = req.body;
+        console.log(req.body)
         if (!user.email) {
             return res.status(422).json({
                 errors: {
@@ -118,6 +123,7 @@ app.prepare().then(() => {
             if (err) {
                 if (err) return res.status(400).send('Une erreur s\'est produite lors de la création de votre compte');
             }
+            console.log(info)
             if (passportUser) {
                 req.logIn(passportUser, function (err) {
                     if (err) {

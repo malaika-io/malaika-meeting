@@ -55,16 +55,22 @@ const LoginForm = () => {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const res = await fetch('/api/users/login/', {
+        console.log(formData)
+
+        const res = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify(formData),
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
         });
         if (res.status === 200) {
             const userObj = await res.json();
             mutate(userObj);
         } else {
-            setErrorMsg('Incorrect username or password. Try again!');
+            //setErrorMsg('Incorrect username or password. Try again!');
+           const err =  await res.text()
+            console.log(err)
         }
+
     }
 
 

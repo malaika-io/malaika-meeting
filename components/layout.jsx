@@ -16,6 +16,7 @@ export default ({children}) => {
             method: 'DELETE',
         });
         mutate(null);
+        await router.replace('/');
     };
     const toggleStyles = (event) => {
         document.querySelector('#burger').classList.toggle('is-active');
