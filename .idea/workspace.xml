@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="version beta4">
-      <change afterPath="$PROJECT_DIR$/config/config.default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="2cb7dc89-dbb2-48af-a4e2-25cc7a270288" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/room.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/room.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/rooms.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/rooms.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="stable" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeders" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
@@ -40,8 +47,10 @@
       <recent name="$PROJECT_DIR$/styles" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/seeders" />
+      <recent name="$PROJECT_DIR$/routes" />
       <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -69,7 +78,7 @@
       <updated>1587576962868</updated>
       <workItem from="1587576969181" duration="10634000" />
       <workItem from="1587592637121" duration="13748000" />
-      <workItem from="1587722981359" duration="14180000" />
+      <workItem from="1587722981359" duration="54502000" />
     </task>
     <task id="LOCAL-00001" summary="add session">
       <created>1587586436714</created>
@@ -162,7 +171,49 @@
       <option name="project" value="LOCAL" />
       <updated>1587738633382</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="version beta4">
+      <created>1587739143823</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1587739143824</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add socket.io">
+      <created>1587742151673</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587742151674</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add rtc">
+      <created>1587753034731</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1587753034731</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add rtc">
+      <created>1587769309818</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1587769309818</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add rooms">
+      <created>1587825010614</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1587825010615</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add rooms and socket">
+      <created>1587825244608</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1587825244608</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,20 +227,37 @@
     <MESSAGE value="version beta1" />
     <MESSAGE value="version beta3" />
     <MESSAGE value="version beta4" />
-    <option name="LAST_COMMIT_MESSAGE" value="version beta4" />
+    <MESSAGE value="add socket.io" />
+    <MESSAGE value="add rtc" />
+    <MESSAGE value="add rooms" />
+    <MESSAGE value="add rooms and socket" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rooms and socket" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587739143558">
+    <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587761278283">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587739143558" />
+    <state x="579" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.977@0.23.1920.977" timestamp="1587761278283" />
+    <state x="353" y="150" key="CommitChangelistDialog2" timestamp="1587830632537">
+      <screen x="0" y="23" width="1920" height="979" />
+    </state>
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1587825242893" />
+    <state x="353" y="150" key="CommitChangelistDialog2/0.23.1920.979@0.23.1920.979" timestamp="1587830632537" />
     <state x="681" y="278" key="EditFileWatcherDialog" timestamp="1587636773193">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="681" y="278" key="EditFileWatcherDialog/0.23.1920.977@0.23.1920.977" timestamp="1587636773193" />
-    <state x="774" y="294" width="667" height="476" key="find.popup" timestamp="1587592240282">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1587811344480">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="774" y="294" width="667" height="476" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1587592240282" />
+    <state width="500" height="445" key="SwitcherDM/0.23.1920.977@0.23.1920.977" timestamp="1587811344480" />
+    <state x="774" y="294" width="667" height="476" key="find.popup" timestamp="1587824000634">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="774" y="294" width="667" height="476" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1587824000634" />
+    <state x="285" y="164" width="670" height="676" key="search.everywhere.popup" timestamp="1587745109510">
+      <screen x="0" y="23" width="1920" height="979" />
+    </state>
+    <state x="285" y="164" width="670" height="676" key="search.everywhere.popup/0.23.1920.979@0.23.1920.979" timestamp="1587745109510" />
   </component>
 </project>

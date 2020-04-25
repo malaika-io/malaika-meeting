@@ -1,5 +1,7 @@
-import { useUser } from '../lib/hooks';
+import {useUser} from '../lib/hooks';
+import React from "react";
 import Head from "next/dist/next-server/lib/head";
+import Link from 'next/link';
 
 const ProfilePage = () => {
     const [user] = useUser();
@@ -45,7 +47,6 @@ const ProfilePage = () => {
                 <title>{first_name}</title>
             </Head>
             <div>
-
                 <section>
                     Email
                     <p>

@@ -9,6 +9,7 @@ import React, {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import {useUser} from '../lib/hooks';
 import fetch from 'node-fetch'
+import Link from 'next/link';
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -56,7 +57,6 @@ const LoginForm = () => {
 
         const res = await fetch('/api/users/login/', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData),
         });
         if (res.status === 200) {
