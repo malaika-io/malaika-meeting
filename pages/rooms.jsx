@@ -31,6 +31,10 @@ class RoomsPage extends Component {
         this.setState({open: true});
     }
 
+    goToRoom() {
+
+    }
+
     componentDidMount() {
         fetch('/api/rooms')
             .then(res => res.json())
@@ -64,15 +68,16 @@ class RoomsPage extends Component {
                             {room.name}
                         </CardContent>
                         <CardActions>
-                            <Button>Go to room</Button>
+                            <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>Go to
+                                room</Button>
                         </CardActions>
                     </Card>
                 ))}
-                {!this.state.rooms && <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                {this.state.rooms.length === 0 &&
+                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                     Create ur First room !
                 </Button>
                 }
-                {this.state.rooms.length === 0 && <div>CRETA a room...</div>}
 
                 <div>
                     <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
