@@ -27,6 +27,9 @@ export default ({children}) => {
             <Head>
                 <title>Malaika</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+                {process.env.NODE_ENV !== 'production' && (
+                    <link rel="stylesheet" type="text/css" href={'/_next/static/css/styles.chunk.css?v=' + Date.now()} />
+                )}
             </Head>
             <header>
                 <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -47,7 +50,7 @@ export default ({children}) => {
                             <div>
                                 {!user ? (
                                     <>
-                                        <Link href="/login">
+                                        <Link href="/login" as="/login">
                                             <a>Se connecter</a>
                                         </Link>
                                         <Link href="/signup">
@@ -56,8 +59,11 @@ export default ({children}) => {
                                     </>
                                 ) : (
                                     <>
-                                        <Link href="/profile">
+                                        <Link href="/profile" passHref>
                                             <a>Profile</a>
+                                        </Link>
+                                        <Link href="/rooms" passHref>
+                                            <a>rooms</a>
                                         </Link>
                                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                                         <a tabIndex={0} role="button" onClick={handleLogout}>

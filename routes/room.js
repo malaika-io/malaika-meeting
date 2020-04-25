@@ -17,11 +17,16 @@ router.get('/', async function (req, res) {
 router.post('/', async function (req, res) {
     const {name} = req.body;
     try {
-        await models.Room.create({
+        const room = await models.Room.create({
             name: name
-        })
-    } catch (e) {
+        });
+        const user = await models.User.findByPk(req.user.id);
+        console.log(user)
+        user.addRoom(room, {through: {role: 'UserRoom'}});
 
+        res.json({ok: true})
+    } catch (e) {
+        res.status(400).send('errr')
     }
 
 });

@@ -1,77 +1,60 @@
-import React, { Component } from "react"
+import React, {Component, useState} from "react"
 import {Card} from '@material-ui/core';
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "../components/Button";
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Box from "@material-ui/core/Box";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import fetch from 'node-fetch'
-import Router from "next/router";
+import Link from 'next/link';
 
-//const [open, setOpen] = React.useState(false);
 
 class RoomsPage extends Component {
-    state = {
-        rooms: []
-    };
 
-
-    componentDidMount() {
-        this.callApi()
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    rooms: res
-                })
-            })
-            .catch(err => console.log(err));
+    constructor(props) {
+        super(props);
+        this.handleClose = this._handleClose.bind(this);
+        this.handleClickOpen = this._handleClickOpen.bind(this);
+        this.state = {open: false, rooms: [], formData: {name: ""}, submitting: false};
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
+    _handleClose() {
+        this.setState({open: false});
+    }
 
-    callApi = async () => {
-        const response = await fetch('/api/rooms');
-        const body = await response.json();
+    _handleClickOpen() {
+        this.setState({open: true});
+    }
 
-        if (response.status !== 200) throw Error(body.message);
+    componentDidMount() {
+        fetch('/api/rooms')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({rooms: data})
+            })
+            .catch(console.log)
+    }
 
-        return body;
-    };
-
-    handleClickOpen = () => {
-        ////setOpen(true);
-    };
-
-     handleClose = () => {
-        //setOpen(false);
-    };
-
-    /* const [errorMsg, setErrorMsg] = useState('');
-     const [open, setOpen] = React.useState(false);
-     const [formData, setFormData] = useState({email: '', password: ''});
-     const [submitting, setSubmitting] = useState(false);
-    */
-
-    /*async function onSubmit(e) {
+    async onSubmit(e) {
         e.preventDefault();
-
         const res = await fetch('/api/rooms', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData),
+            body: JSON.stringify(this.state.formData),
         });
         if (res.status === 200) {
-            await Router.push("/rooms");
+            this._handleClose();
+        } else {
+
         }
     }
 
 
- */
     render() {
         return (
             <section>
@@ -81,63 +64,58 @@ class RoomsPage extends Component {
                             {room.name}
                         </CardContent>
                         <CardActions>
-                            <Button size="small">Go to room</Button>
+                            <Button>Go to room</Button>
                         </CardActions>
                     </Card>
                 ))}
-                {!this.state.rooms && <div>Loading...</div>}
-                {!this.state.rooms && <Button variant="contained" color="primary" onClick={this.handleClickOpen()}>Add room</Button>}
-                {/* {!rooms && <Button variant="contained" color="primary" onClick={handleClickOpen}>Add room</Button>}
-            <Button variant="contained" color="primary">
-                Add mores rooms
-            </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We will send updates
-                        occasionally.
-                    </DialogContentText>
-                    <form  noValidate onSubmit={onSubmit}>
-                        {errorMsg ? <p style={{color: 'red'}}>{errorMsg}</p> : null}
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                            defaultValue={formData.email}
-                            onChange={e => setFormData({...formData, email: e.target.value})}
-                        />
+                {!this.state.rooms && <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                    Create ur First room !
+                </Button>
+                }
+                {this.state.rooms.length === 0 && <div>CRETA a room...</div>}
 
-                        <Box mb={6}>
-                            <Button
-                                disabled={submitting}
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                            >
-                                {submitting && (
-                                    <CircularProgress size={24}/>
-                                )}
-                                {submitting ? 'Connectez-vous...' : 'Se connecter'}
-                            </Button>
-                        </Box>
-                    </form>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
+                <div>
+                    <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                        Add mores rooms !
                     </Button>
-                    <Button onClick={handleClose} color="primary">
-                        Subscribe
-                    </Button>
-                </DialogActions>
-            </Dialog>*/}
+
+                    <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                        <form noValidate onSubmit={this.onSubmit}>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Create a Room
+                                </DialogContentText>
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="name"
+                                    label="Name"
+                                    name="name"
+                                    autoComplete="name"
+                                    autoFocus
+                                    defaultValue={this.state.formData.name}
+                                    onChange={e => this.state.formData.name = e.target.value}
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={this.handleClose} color="primary">
+                                    Annuler
+                                </Button>
+
+                                <Button
+                                    disabled={this.state.submitting}
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    envoyer
+                                </Button>
+                            </DialogActions>
+                        </form>
+                    </Dialog>
+                </div>
             </section>
         );
     }

@@ -1,7 +1,7 @@
 import {useUser} from '../lib/hooks';
 import React from "react";
 import Head from "next/dist/next-server/lib/head";
-
+import Link from 'next/link';
 
 const ProfilePage = () => {
     const [user] = useUser();

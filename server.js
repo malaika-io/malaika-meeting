@@ -40,6 +40,8 @@ app.prepare().then(() => {
     expressApp.use(passport.initialize());
     expressApp.use(passport.session());
 
+    //expressApp.use('/static', express.static(path.join(__dirname, '.next/static')));
+
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
@@ -140,7 +142,10 @@ app.prepare().then(() => {
     expressApp.use('/api/rooms', rooms);
 
     expressApp.get('*', (req, res) => {
-        return handle(req, res)
+        const {parse} = require('url');
+        const parsedUrl = parse(req.url, true)
+        const {pathname, query} = parsedUrl
+        return handle(req, res, parsedUrl)
     });
 
     const server = http.createServer(expressApp).listen(3000, function () {
